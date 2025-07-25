@@ -49,63 +49,11 @@ This project is a production-ready **monitoring and alerting stack** built using
 git clone https://github.com/BishoyFrancis/monitoring-stack.git
 cd monitoring-stack
 docker-compose up -d
+```
 
-📊 Access the Tools
-Grafana → http://localhost:3000
-Username: admin | Password: admin
+# 📊 Access the Tools
+Tool	URL	Credentials
+Grafana	http://localhost:3000	admin / admin
+Prometheus	http://localhost:9090	No auth required
+Alertmanager	http://localhost:9093	No auth required
 
-Prometheus → http://localhost:9090
-
-Alertmanager → http://localhost:9093
-
-📂 Project Structure
-bash
-Copy
-Edit
-monitoring-stack/
-├── docker-compose.yml
-├── prometheus/
-│   └── prometheus.yml
-├── grafana/
-│   └── dashboards/
-├── alertmanager/
-│   └── alertmanager.yml
-└── exporters/
-    └── node-exporter/
-📈 Sample Dashboards & Alerts
-🖥️ Grafana
-CPU, Memory, Disk Usage
-
-Docker Container Health
-
-🚨 Alerts
-High CPU usage
-
-Node down
-
-Disk > 90%
-
-(Customize and expand based on your needs!)
-
-🧠 Learning Objectives
-This project was built with the goal of:
-
-Practicing real-world DevOps observability
-
-Understanding how monitoring systems work together
-
-Creating a portfolio-ready infrastructure setup
-
-📚 Future Improvements
- Add Blackbox Exporter
-
- Add Loki for logs
-
- Add Kubernetes manifests
-
- Enable remote alerting channels (Slack, Email, etc.)
-
-📘 License
-This project is licensed under the MIT License.
-
-Crafted with ❤️ by BishoyFrancis
