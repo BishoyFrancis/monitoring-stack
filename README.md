@@ -58,3 +58,4 @@ docker-compose up -d
 | Prometheus   | http://localhost:9090    | No auth required  |
 | Alertmanager | http://localhost:9093    | No auth required  |
 
+<pre><code>```bash monitoring-stack/ ├── docker-compose.yml ├── prometheus/ │ └── prometheus.yml ├── grafana/ │ └── dashboards/ ├── alertmanager/ │ └── config.yml ``` </code></pre>
