@@ -75,12 +75,4 @@ This project was built with the goal of:
 - ☸️ Add Kubernetes manifests for production deployment
 - 📬 Integrate remote alerting channels (Slack, Email, etc.)
 
----
-
-## 📘 License
-
-This project is licensed under the **MIT License**.
-
----
-
 > Crafted with ❤️ by [BishoyFrancis](https://github.com/BishoyFrancis)
