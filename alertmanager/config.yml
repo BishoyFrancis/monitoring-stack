@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 5s
+
+route:
+  receiver: "email-alert"
+
+receivers:
+  - name: "email-alert"
+    email_configs:
+      - to: "a@b.com"
+        from: "a@b.com"
+        smarthost: "smtp.example.com:587"
+        auth_username: "a@b.com"
+        auth_identity: "a@b.com"
+        auth_password: "your_password"
+        require_tls: true
+        send_resolved: true
