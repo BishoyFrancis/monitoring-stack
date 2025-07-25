@@ -50,12 +50,72 @@ git clone https://github.com/BishoyFrancis/monitoring-stack.git
 cd monitoring-stack
 docker-compose up -d
 ```
+---
 
-# 📊 Access the Tools
-| Tool         | URL                      | Credentials       |
-|--------------|--------------------------|-------------------|
-| Grafana      | http://localhost:3000    | admin / admin     |
-| Prometheus   | http://localhost:9090    | No auth required  |
-| Alertmanager | http://localhost:9093    | No auth required  |
+## 🛠️ Access the Tools
 
-<pre><code>```bash monitoring-stack/ ├── docker-compose.yml ├── prometheus/ │ └── prometheus.yml ├── grafana/ │ └── dashboards/ ├── alertmanager/ │ └── config.yml ``` </code></pre>
+| Tool          | URL                      | Default Credentials       |
+|---------------|---------------------------|---------------------------|
+| Grafana       | [http://localhost:3000](http://localhost:3000) | `admin` / `admin`         |
+| Prometheus    | [http://localhost:9090](http://localhost:9090) | -                         |
+| Alertmanager  | [http://localhost:9093](http://localhost:9093) | -                         |
+
+---
+
+## 📂 Project Structure
+
+monitoring-stack/
+├── docker-compose.yml
+├── prometheus/
+│ └── prometheus.yml
+├── grafana/
+│ └── dashboards/
+├── alertmanager/
+│ └── alertmanager.yml
+└── exporters/
+└── node-exporter/
+
+
+---
+
+## 📊 Sample Dashboards & Alerts
+
+### 🖥️ Grafana Dashboards
+- CPU, Memory, and Disk Usage
+- Docker Container Health
+
+### 🚨 Alertmanager Alerts
+- High CPU usage
+- Node down
+- Disk usage > 90%
+
+_(Customize and expand based on your needs!)_
+
+---
+
+## 🧠 Learning Objectives
+
+This project was built with the goal of:
+
+- Practicing real-world **DevOps observability**
+- Understanding how monitoring systems integrate and operate
+- Creating a **portfolio-ready** monitoring infrastructure
+
+---
+
+## 📚 Future Improvements
+
+- ➕ Add Blackbox Exporter for endpoint probing
+- 📦 Add Loki for centralized log collection
+- ☸️ Add Kubernetes manifests for production deployment
+- 📬 Integrate remote alerting channels (Slack, Email, etc.)
+
+---
+
+## 📘 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+> Crafted with ❤️ by [BishoyFrancis](https://github.com/BishoyFrancis)
