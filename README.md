@@ -52,8 +52,9 @@ docker-compose up -d
 ```
 
 # 📊 Access the Tools
-Tool	URL	Credentials
-Grafana	http://localhost:3000	admin / admin
-Prometheus	http://localhost:9090	No auth required
-Alertmanager	http://localhost:9093	No auth required
+| Tool         | URL                      | Credentials       |
+|--------------|--------------------------|-------------------|
+| Grafana      | http://localhost:3000    | admin / admin     |
+| Prometheus   | http://localhost:9090    | No auth required  |
+| Alertmanager | http://localhost:9093    | No auth required  |
 
