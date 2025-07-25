@@ -1,64 +1,27 @@
-# 🚀 Monitoring Stack — Prometheus, Grafana, and Alertmanager
+# 📈 Monitoring Stack
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)  
-**Author:** [BishoyFrancis](https://github.com/BishoyFrancis)  
-**Repo:** `monitoring-stack`
+A plug-and-play observability stack using **Prometheus**, **Grafana**, **Alertmanager**, and **Blackbox Exporter** — perfect for learning, development, and showcasing your DevOps skills.
 
 ---
 
-## 📸 Overview
+## 🚀 Stack Overview
 
-This project is a production-ready **monitoring and alerting stack** built using:
-- **Prometheus** for metrics collection
-- **Grafana** for powerful visual dashboards
-- **Alertmanager** for alert routing (Slack/email/Telegram)
+- **Prometheus** – Metrics collection & querying
+- **Grafana** – Dashboards & visualization
+- **Alertmanager** – Alerts & notifications
+- **Node Exporter** – System metrics from your host machine
+- **Blackbox Exporter** – Endpoint and uptime probing (HTTP, TCP, ICMP, etc.)
 
-> 🐳 Powered by Docker Compose — ideal for local development and small-scale deployments.
-
----
-
-## 🎯 Features
-
-✅ Easy Docker-based deployment  
-✅ Pre-configured Grafana dashboards  
-✅ Alertmanager integration with sample alerts  
-✅ Clean, modular config structure  
-✅ Ready to plug into any service!
-
----
-
-## 🛠️ Stack Components
-
-| Component     | Purpose                              |
-|---------------|--------------------------------------|
-| Prometheus    | Metrics collection & scraping        |
-| Node Exporter | Server-level metrics exporter        |
-| Grafana       | Metrics visualization & dashboards   |
-| Alertmanager  | Alerts routing & notifications       |
-
----
-
-## 🚀 Getting Started
-
-### 🔧 Requirements
-- Docker
-- Docker Compose
-
-### 🧪 Run the Stack
-```bash
-git clone https://github.com/BishoyFrancis/monitoring-stack.git
-cd monitoring-stack
-docker-compose up -d
-```
 ---
 
 ## 🛠️ Access the Tools
 
-| Tool          | URL                      | Default Credentials       |
-|---------------|---------------------------|---------------------------|
-| Grafana       | [http://localhost:3000](http://localhost:3000) | `admin` / `admin`         |
-| Prometheus    | [http://localhost:9090](http://localhost:9090) | -                         |
-| Alertmanager  | [http://localhost:9093](http://localhost:9093) | -                         |
+| Tool               | URL                                  | Default Credentials       |
+|--------------------|---------------------------------------|---------------------------|
+| Grafana            | [http://localhost:3000](http://localhost:3000) | `admin` / `admin`         |
+| Prometheus         | [http://localhost:9090](http://localhost:9090) | -                         |
+| Alertmanager       | [http://localhost:9093](http://localhost:9093) | -                         |
+| Blackbox Exporter  | [http://localhost:9115](http://localhost:9115) |
 
 ---
 
@@ -72,8 +35,9 @@ monitoring-stack/
 │ └── dashboards/
 ├── alertmanager/
 │ └── alertmanager.yml
-└── exporters/
-└── node-exporter/
+├── exporters/
+│ ├── node-exporter/
+│ └── blackbox-exporter/
 
 
 ---
@@ -83,11 +47,13 @@ monitoring-stack/
 ### 🖥️ Grafana Dashboards
 - CPU, Memory, and Disk Usage
 - Docker Container Health
+- Endpoint Latency / HTTP Probes (via Blackbox Exporter)
 
 ### 🚨 Alertmanager Alerts
 - High CPU usage
 - Node down
 - Disk usage > 90%
+- Endpoint down / Unreachable (Blackbox alerts)
 
 _(Customize and expand based on your needs!)_
 
@@ -105,7 +71,6 @@ This project was built with the goal of:
 
 ## 📚 Future Improvements
 
-- ➕ Add Blackbox Exporter for endpoint probing
 - 📦 Add Loki for centralized log collection
 - ☸️ Add Kubernetes manifests for production deployment
 - 📬 Integrate remote alerting channels (Slack, Email, etc.)
