@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   selector:
-    app: grafana-service
+    app: grafana
   type: NodePort
   ports:
     - name: grafana-service
