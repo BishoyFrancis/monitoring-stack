@@ -11,6 +11,33 @@ data:
       scrape_interval: 15s
 
     scrape_configs:
+      - job_name: 'kubelet'
+        scheme: https
+        tls_config:
+          insecure_skip_verify: true
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        kubernetes_sd_configs:
+          - role: node
+        relabel_configs:
+          - action: labelmap
+            regex: __meta_kubernetes_node_label_(.+)
+          - target_label: __address__
+            replacement: kubernetes.default.svc:10250
+          - source_labels: [__meta_kubernetes_node_name]
+            regex: (.+)
+            target_label: instance
+            replacement: ${1}:10250
+
+      - job_name: 'kube-state-metrics'
+        honor_timestamps: true
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets: ['kube-state-metrics.monitoring.svc.cluster.local:8080']
+        relabel_configs:
+          - target_label: cluster
+            replacement: minikube
+
       - job_name: 'prometheus'
         static_configs:
           - targets: ['localhost:9090']
