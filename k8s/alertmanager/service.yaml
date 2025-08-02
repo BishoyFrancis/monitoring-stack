@@ -10,6 +10,6 @@ spec:
   ports:
     - name: alertmanager
       protocol: TCP
-      port: 9090
+      port: 9093
       targetPort: 9093
       nodePort: 30000
