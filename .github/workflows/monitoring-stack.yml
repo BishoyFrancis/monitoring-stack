@@ -6,7 +6,8 @@ name: Monitoring Stack Pipeline
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    paths:
+      - 'k8s/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,5 +26,5 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: docker compose version
+        run: echo "Changes Detected in k8s directory. Proceeding with monitoring stack deployment."
 
