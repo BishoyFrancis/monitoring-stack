@@ -1,5 +1,5 @@
 groups:
-  - name: example_alerts
+  - name: example_alertss
     rules:
       - alert: HighCPUUsage
         expr: node_cpu_seconds_total{mode="user"} > 0.8
