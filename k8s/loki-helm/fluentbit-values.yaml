@@ -1,0 +1,77 @@
+# Enable Loki output
+loki:
+  enabled: true
+  serviceName: loki
+  servicePort: 3100
+  tenantID: ""  # leave empty if multi-tenancy is disabled
+  labels:
+    job: fluentbit
+
+# Disable outputs other than Loki
+elasticsearch:
+  enabled: false
+kinesis:
+  enabled: false
+cloudwatch:
+  enabled: false
+stackdriver:
+  enabled: false
+
+# Fluent Bit input config
+config:
+  service: |
+    [SERVICE]
+        Flush        1
+        Daemon       Off
+        Log_Level    info
+        Parsers_File parsers.conf
+
+  inputs: |
+    [INPUT]
+        Name              tail
+        Tag               kube.*
+        Path              /var/log/containers/*.log
+        Parser            docker
+        DB                /var/log/flb_kube.db
+        Mem_Buf_Limit     10MB
+        Skip_Long_Lines   On
+        Refresh_Interval  10
+
+  filters: |
+    [FILTER]
+        Name                kubernetes
+        Match               kube.*
+        Kube_Tag_Prefix     kube.var.log.containers.
+        Merge_Log           On
+        Keep_Log            Off
+        Annotations         Off
+        Labels              On
+
+    # Optional: Drop noisy logs
+    [FILTER]
+        Name                grep
+        Match               kube.*
+        Exclude             namespace_name kube-system
+
+    [FILTER]
+        Name                grep
+        Match               kube.*
+        Exclude             container_name fluent-bit
+
+  outputs: |
+    [OUTPUT]
+        Name                loki
+        Match               *
+        Host                loki.monitoring.svc.cluster.local
+        Port                3100
+        Labels              job=fluentbit,namespace=$kubernetes['namespace_name'],pod=$kubernetes['pod_name'],container=$kubernetes['container_name']
+        Auto_Kubernetes_Labels On
+        LogLevel            info
+
+# Optional: pod resource limits
+resources:
+  limits:
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi

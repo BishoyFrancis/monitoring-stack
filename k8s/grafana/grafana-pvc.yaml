@@ -6,7 +6,7 @@ metadata:
   labels:
     app: grafana-pvc
 spec:
-  storageClassName: standard
+  storageClassName: hostpath
   accessModes:
     - ReadWriteOnce
   resources:
